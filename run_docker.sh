@@ -19,13 +19,15 @@ XAUTH=/tmp/.docker.xauth
 #   exit 1
 # fi
 
-docker run --rm -it \
+docker run -it \
+    --name="ros" \
     --gpus=all \
     --privileged \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
     --volume="$XAUTH:$XAUTH" \
+    --volume="./catkin_ws:/home/rvlros/catkin_ws" \
     --env="XAUTHORITY=$XAUTH" \
     --env="DISPLAY=unix$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --net=host \
-    ros:1.1-cudagl11.3.0-devel-ubuntu20.04 /bin/bash
+    hsun:1.1-noetic-cudagl-11.3.0-ubuntu2004 /bin/bash
