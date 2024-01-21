@@ -1,4 +1,4 @@
-FROM nvidia/cudagl:11.3.0-devel-ubuntu20.04
+FROM nvidia/cudagl:11.3.0-devel-ubuntu20.04 as base
 
 ENV DEBIAN_FRONTEND noninteractive
 ARG PUID=1000
@@ -23,7 +23,8 @@ RUN set -xe; \
         build-essential \
         git \
         zip \
-        tar && \
+        tar \
+        gdb && \
    add-apt-repository ppa:deadsnakes/ppa && \
    apt-get update && \
    apt-get install -y python3 python3-pip
@@ -51,6 +52,8 @@ RUN set -xe; \
     mkdir -p /home/${USER_NAME}/catkin_ws/src && \
     chown ${USER_NAME}:${GROUP_NAME} -R /home/${USER_NAME}/catkin_ws && \
     apt-get autoremove -y
+
+FROM base
 
 # Install PX4
 SHELL ["/bin/bash", "-c"]
