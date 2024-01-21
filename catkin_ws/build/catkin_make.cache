@@ -1,0 +1,2 @@
+beginner_tutorials:pass_numbers
+-DCATKIN_DEVEL_PREFIX=/home/rvlros/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rvlros/catkin_ws/install -G Unix Makefiles

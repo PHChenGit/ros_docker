@@ -1,0 +1,8 @@
+prefix=/home/rvlros/catkin_ws/install
+
+Name: pass_numbers
+Description: Description of pass_numbers
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
